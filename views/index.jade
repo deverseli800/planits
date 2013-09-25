@@ -1,0 +1,47 @@
+extends layout
+
+block content
+  script(type="text/javascript", src="/javascripts/planitsController.js")
+
+  div(ng-controller="planitsCtrl")
+    div.row
+      div.addTasks.col-lg-6
+        h2 New Task
+        form.form(name="taskForm")
+          div.form-group
+            Label Title
+            input.form-control(type="text", ng-model="task.title", placeholder="task title") 
+          div.form-group
+            Label Description
+            input.form-control(type="text", ng-model="task.description", placeholder="task description")
+          div.form-group   
+            Label Task Duration 
+            input.form-control(type="text", ng-model="task.ttl", placeholder="time to completion") 
+          div.form-group
+            Label Due Date
+            input.form-control(type="text", datepicker-popup="dd-MMMM-yyyy", placeholder="due date", ng-model="task.due" ,is-open="opened", min="minDate" ,max="'2015-06-22'" ,datepicker-options="dateOptions" ,date-disabled="disabled(date, mode)" ,ng-required="true")
+            button(class="btn",ng-click="open()")
+             i.glyphicon.glyphicon-globe
+          div.form-group
+            Label Orbit
+            select.form-control(ng-model="task.orbit")
+              option(ng-repeat="orbit in orbits") {{orbit}}
+          button(type="submit", ng-click="submit(task)") Add Task
+        {{tasks}}
+      div.taskList.col-lg-6
+        h2 My Tasks
+        ol.list-group
+          li.list-group-item(ng-repeat="task in tasks | orderBy: 'orbit'")
+            task( title='{{task.title}}', description='{{task.description}}', due="{{task.due}}", ttl="{{task.ttl | number}}", orbit="{{task.orbit}}")
+    div.row
+      div.solarSystem.col-lg-12
+        canvas(id="solarCanvas", height=1500, width=1355)
+        h2 Planits 
+        div.orbitWrapper
+          div.orbit(ng-repeat="orbit in orbits | orderBy: 'orbit' ")
+            h2 Orbit {{orbit}}
+            div(planet, ng-repeat="task in tasks | filter:isOrbit(orbit)", title='{{task.title}}', description='{{task.description}}', due="{{task.due}}", ttl="{{task.ttl}}", orbit="{{task.orbit}}")
+
+ 
+  script(type="text/javascript", src="/javascripts/canvasDrawings.js")
+

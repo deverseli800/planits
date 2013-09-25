@@ -1,0 +1,115 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.taskPlanet {
+	background-color:#2e373f;
+	border-radius:320px;
+	margin-bottom:100px;
+	text-align:center;
+	color:white;
+	position: relative;
+	margin:auto;
+	left:0;
+	right:0;
+	background-position: center;
+}
+
+/* Style the planets based on size. could abstract the background positions to make DRY*/
+
+.smallPlanet {
+	background-image:url("/images/smallPlanet.png");
+	background-size: 'cover';
+    background-repeat: 'no-repeat';
+    background-position: 'center center';
+}
+
+.largePlanet {
+	background-image:url("/images/largePlanet.png");
+	background-size: 'cover';
+    background-repeat: 'no-repeat';
+    background-position: 'center center';
+}
+
+.mediumPlanet {
+	background-image:url("/images/mediumPlanet.png");	
+	background-size: 'cover';
+    background-repeat: 'no-repeat';
+    background-position: 'center center';
+}
+
+.taskTTL {
+	position: absolute;
+	margin: auto;
+	top:0;
+	bottom:0;
+	height:55px;
+	left:0;
+	right:0;
+	border:3px white solid;
+	width:55px;
+	border-radius:100px;
+	background-color:rgba(0,0,0,0.5);
+
+}
+
+.taskTitle {
+	-webkit-transform:rotate(0deg);
+	text-align: center;
+	position: relative;
+	top:0;
+	margin-bottom:40px;
+}
+
+
+.taskTTL h1,.taskTTL h2, .taskTTL h3, .taskTTL h4 {
+	margin-top:0;
+	margin-bottom:0;
+	line-height:50px;
+}
+
+.solarSystem {
+	height:1500px;
+	/*background-image:url('/images/spacePattern.jpg');*/
+	background-color:#111826;
+	position: relative;
+	color:white;
+	text-align: center;
+}
+
+
+#solarCanvas {
+	border:1px green solid ;
+	position: absolute;
+	top:0;
+	left:0;
+}
+
+.taskWrapper {
+	width:260px;
+	height:260px;
+	position: relative;
+	margin: auto;
+	top:0;
+	bottom:0;
+	top:77px;
+	float: left;
+}
+
+.orbit {
+	width:100%;
+	position: relative;
+	border:1px transparent solid;
+}
+
+.orbitWrapper {
+	width:100%;
+	position: absolute;
+	left:0;
+	margin-top:-142px;
+}
