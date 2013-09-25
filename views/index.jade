@@ -40,8 +40,7 @@ block content
         div.orbitWrapper
           div.orbit(ng-repeat="orbit in orbits | orderBy: 'orbit' ")
             h2 Orbit {{orbit}}
-            div(planet, ng-repeat="task in tasks | filter:isOrbit(orbit)", title='{{task.title}}', description='{{task.description}}', due="{{task.due}}", ttl="{{task.ttl}}", orbit="{{task.orbit}}")
-
+            div(planet, ng-repeat="task in tasks | filter:isOrbit(orbit)", title='{{task.title}}', description='{{task.description}}', due="{{task.due}}", ttl="{{task.ttl}}", orbit="{{task.orbit}}", ng-click="toggleTaskMenu()")
  
   script(type="text/javascript", src="/javascripts/canvasDrawings.js")
 

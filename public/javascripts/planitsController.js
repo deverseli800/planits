@@ -16,7 +16,21 @@ app.controller('planitsCtrl', function($scope) {
         }
   }
 
-  $scope.orbits=[5,4,3,2,1]
+  $scope.sortTasks=function() {
+     var today = $filter('date')(new Date(), 'yyyy-MM-dd');
+      alert(today);
+  }
+ 
+  $scope.sortOrbit=function() {
+    var today= new Date();
+    alert(today);
+    $scope.$watch(task, function() {
+      if(task==today) {
+        alert(today);
+      }
+    })
+  }
+  $scope.orbits=[5,4,3,2,1];
   //we're gonna reset our form to these empty values on submit
   var defaultForm = {
               tite : "",
@@ -31,6 +45,7 @@ app.controller('planitsCtrl', function($scope) {
   $scope.addTask = function(task) {
     $scope.master= angular.copy(task);
     $scope.tasks.push({title:task.title, description: task.description, due: task.due, ttl: task.ttl, orbit:task.orbit});
+    $scope.sortOrbit();
   }
  
   $scope.resetForm = function(task){
@@ -44,6 +59,7 @@ app.controller('planitsCtrl', function($scope) {
     $scope.addTask(task);
     $scope.resetForm(task);
     $scope.taskForm.$setPristine();
+
   }
 
   //add orbit select field that takes the options of the orbit objects. 
@@ -86,8 +102,12 @@ app.directive('planet', function() {
       orbit:"@",
       size:"@"
     },
-    template:"<div class='taskWrapper' style='height:{{83+ttl*25}}px; margin-top:{{-50-12.5*ttl}}px;'><div class='taskTitle'><h4>{{title}}</h4></div><div class='taskPlanet {{size}}' style='width:{{50+25*ttl}}px; height:{{50+25*ttl}}px;'><div class='taskTTL'><h3>{{ttl}}</h3></div></div> </div>",
+    template:"<div class='taskWrapper' style='height:{{83+ttl*25}}px; margin-top:{{-54-12.5*ttl}}px;'><div class='taskPlanet {{size}}' style='width:{{50+25*ttl}}px; height:{{50+25*ttl}}px;'><div class='taskTTL'><h3>{{ttl}}</h3></div></div><div class='taskTitle'><h4 class='lead'>{{title}}</h4></div><h1 ng-show='showTaskMenu'>Blah</h1> </div>",
     link:function(scope, element, attrs) {
+      scope.showTaskMenu=false;
+      scope.toggleTaskMenu=function() {
+        scope.showTaskMenu=! scope.showTaskMenu;
+      }
       attrs.$observe('ttl', function(value) {
         if(value<4) {
          attrs.$set('size', 'smallPlanet')

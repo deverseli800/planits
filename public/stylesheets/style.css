@@ -63,7 +63,6 @@ a {
 	text-align: center;
 	position: relative;
 	top:0;
-	margin-bottom:40px;
 }
 
 
@@ -97,8 +96,8 @@ a {
 	margin: auto;
 	top:0;
 	bottom:0;
-	top:77px;
 	float: left;
+	top:143px;
 }
 
 .orbit {
