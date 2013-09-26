@@ -16,17 +16,14 @@ app.controller('planitsCtrl', function($scope) {
         }
   }
 
-  $scope.sortTasks=function() {
-     var today = $filter('date')(new Date(), 'yyyy-MM-dd');
-      alert(today);
-  }
+
  
-  $scope.sortOrbit=function() {
+  $scope.sortOrbit=function(task) {
     var today= new Date();
-    alert(today);
+    alert(task.orbit);
     $scope.$watch(task, function() {
       if(task==today) {
-        alert(today);
+        alert(task.orbit);
       }
     })
   }
@@ -45,7 +42,7 @@ app.controller('planitsCtrl', function($scope) {
   $scope.addTask = function(task) {
     $scope.master= angular.copy(task);
     $scope.tasks.push({title:task.title, description: task.description, due: task.due, ttl: task.ttl, orbit:task.orbit});
-    $scope.sortOrbit();
+    $scope.sortOrbit(task);
   }
  
   $scope.resetForm = function(task){

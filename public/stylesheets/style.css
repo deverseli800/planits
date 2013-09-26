@@ -75,7 +75,8 @@ a {
 .solarSystem {
 	height:1500px;
 	/*background-image:url('/images/spacePattern.jpg');*/
-	background-color:#111826;
+	/*background-color:#111826;*/
+	background-color:#253041;
 	position: relative;
 	color:white;
 	text-align: center;
