@@ -20,14 +20,29 @@ app.controller('planitsCtrl', function($scope) {
  
   $scope.sortOrbit=function(task) {
     var today= new Date();
-    alert(task.orbit);
+
+    //figure out if task is due today 
+    $scope.areSameDate=function(d1, d2) {
+      return d1.getFullYear() == d2.getFullYear()
+        && d1.getMonth() == d2.getMonth()
+        && d1.getDate() == d2.getDate();
+    }
+
+    
     $scope.$watch(task, function() {
-      if(task==today) {
-        alert(task.orbit);
+      if($scope.areSameDate(task.due, today)==true) {
+        alert('yes!');
+        $scope.tasks.push({title:task.title, description: task.description, due: task.due, ttl: task.ttl, orbit:"1"});
+      }
+      else {
+        alert(today+task.due.getDate());
+        $scope.tasks.push({title:task.title, description: task.description, due: task.due, ttl: task.ttl, orbit:task.orbit});
       }
     })
   }
+
   $scope.orbits=[5,4,3,2,1];
+
   //we're gonna reset our form to these empty values on submit
   var defaultForm = {
               tite : "",
@@ -41,7 +56,6 @@ app.controller('planitsCtrl', function($scope) {
 
   $scope.addTask = function(task) {
     $scope.master= angular.copy(task);
-    $scope.tasks.push({title:task.title, description: task.description, due: task.due, ttl: task.ttl, orbit:task.orbit});
     $scope.sortOrbit(task);
   }
  
