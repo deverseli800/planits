@@ -8,6 +8,7 @@ app.controller('planitsCtrl', function($scope) {
     {title: "Planits mockup UI", description: "sketch out a UI for the iOS version of Planits", ttl: "2", due: "2013-09-22T01:01:03.747Z", orbit: "2" },
     ];
 
+ 
   //filter data by task.orbit 
   $scope.isOrbit = function(orbitId) {
       // take task and return the ones where the orbitID==task.orbit
@@ -15,9 +16,9 @@ app.controller('planitsCtrl', function($scope) {
             return task.orbit == orbitId;
         }
   }
-
-
  
+  
+
   $scope.sortOrbit=function(task) {
     var today= new Date();
 
@@ -31,11 +32,10 @@ app.controller('planitsCtrl', function($scope) {
     
     $scope.$watch(task, function() {
       if($scope.areSameDate(task.due, today)==true) {
-        alert('yes!');
+        alert('tasks due today are added to your 1st orbit ');
         $scope.tasks.push({title:task.title, description: task.description, due: task.due, ttl: task.ttl, orbit:"1"});
       }
       else {
-        alert(today+task.due.getDate());
         $scope.tasks.push({title:task.title, description: task.description, due: task.due, ttl: task.ttl, orbit:task.orbit});
       }
     })
@@ -134,5 +134,20 @@ app.directive('planet', function() {
     }
   }
 })
+
+app.directive('sortOrbit', function() {
+  return {
+    link:function (scope, element, attrs) {
+         scope.sum=0;
+         angular.forEach(scope.tasks, function(task) {
+          if(task.orbit==scope.orbit)
+            scope.sum=scope.sum+parseInt(task.ttl);
+            console.log(scope.sum);
+          
+         })
+  }
+}
+})
+
 
 
