@@ -29,6 +29,16 @@ app.controller('planitsCtrl', function($scope) {
         && d1.getDate() == d2.getDate();
     }
 
+    $scope.areSameWeek=function(today, d2) {
+        //Get the date value of next week.
+      var nextWeek = Date.parse(new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7));
+      var todayParsed= Date.parse(new Date(today.getFullYear(), today.getMonth(), today.getDate()));
+      var compareDate=Date.parse(new Date(d2.getFullYear(), d2.getMonth(), d2.getDate()));
+      if (nextWeek > compareDate) {
+        return true;
+      }
+        return false;
+    }
     
     $scope.$watch(task, function() {
       if($scope.areSameDate(task.due, today)==true) {
@@ -36,7 +46,14 @@ app.controller('planitsCtrl', function($scope) {
         $scope.tasks.push({title:task.title, description: task.description, due: task.due, ttl: task.ttl, orbit:"1"});
       }
       else {
-        $scope.tasks.push({title:task.title, description: task.description, due: task.due, ttl: task.ttl, orbit:task.orbit});
+        if($scope.areSameWeek(today, task.due)==true) {
+          $scope.tasks.push({title:task.title, description: task.description, due: task.due, ttl: task.ttl, orbit:"2"});
+        }
+        else {
+          $scope.tasks.push({title:task.title, description: task.description, due: task.due, ttl: task.ttl, orbit:"3"});
+        }
+       
+
       }
     })
   }
