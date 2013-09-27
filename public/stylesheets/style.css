@@ -85,7 +85,6 @@ a {
 
 
 #solarCanvas {
-	border:1px green solid ;
 	position: absolute;
 	top:0;
 	left:0;
@@ -106,6 +105,13 @@ a {
 	width:100%;
 	position: relative;
 	border:1px transparent solid;
+}
+
+.orbitLabel {
+	position: absolute;
+	margin:auto;
+	left:0;
+	right:0;
 }
 
 .orbitWrapper {

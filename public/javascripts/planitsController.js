@@ -130,7 +130,7 @@ app.directive('planet', function() {
       orbit:"@",
       size:"@"
     },
-    template:"<div class='taskWrapper' style='height:{{83+ttl*25}}px; margin-top:{{-54-12.5*ttl}}px;'><div class='taskPlanet {{size}}' style='width:{{50+25*ttl}}px; height:{{50+25*ttl}}px;'><div class='taskTTL'><h3>{{ttl}}</h3></div></div><div class='taskTitle'><h4 class='lead'>{{title}}</h4></div><h1 ng-show='showTaskMenu'>Blah</h1> </div>",
+    template:"<div class='taskWrapper' style='height:{{83+ttl*25}}px; margin-top:{{-10-12.5*ttl}}px;'><div class='taskPlanet {{size}}' style='width:{{50+25*ttl}}px; height:{{50+25*ttl}}px;'><div class='taskTTL'><h3>{{ttl}}</h3></div></div><div class='taskTitle'><h4 class='lead'>{{title}}</h4></div><h1 ng-show='showTaskMenu'>Blah</h1> </div>",
     link:function(scope, element, attrs) {
       scope.showTaskMenu=false;
       scope.toggleTaskMenu=function() {

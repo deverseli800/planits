@@ -39,7 +39,9 @@ block content
         h2 Planits 
         div.orbitWrapper
           div.orbit(ng-repeat="orbit in orbits | orderBy: 'orbit' ")
-            h2(sort-orbit, orbitNum="orbit") Orbit {{orbit}} {{sum}}
+            div.orbitLabel
+              h2(sort-orbit, orbitNum="orbit") Orbit {{orbit}} 
+              h4 {{sum}} Hours
             div(planet, ng-repeat="task in tasks | filter:isOrbit(orbit)", title='{{task.title}}', description='{{task.description}}', due="{{task.due}}", ttl="{{task.ttl}}", orbit="{{task.orbit}}", ng-click="toggleTaskMenu()")
  
   script(type="text/javascript", src="/javascripts/canvasDrawings.js")
