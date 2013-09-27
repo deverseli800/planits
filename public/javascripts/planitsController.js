@@ -130,11 +130,13 @@ app.directive('planet', function() {
       orbit:"@",
       size:"@"
     },
-    template:"<div class='taskWrapper' style='height:{{83+ttl*25}}px; margin-top:{{-10-12.5*ttl}}px;'><div class='taskPlanet {{size}}' style='width:{{50+25*ttl}}px; height:{{50+25*ttl}}px;'><div class='taskTTL'><h3>{{ttl}}</h3></div></div><div class='taskTitle'><h4 class='lead'>{{title}}</h4></div><h1 ng-show='showTaskMenu'>Blah</h1> </div>",
+    template:"<div class='taskWrapper' style='height:{{83+ttl*25}}px; margin-top:{{-10-12.5*ttl}}px;'><div class='taskPlanet {{size}}' style='width:{{50+25*ttl}}px; height:{{50+25*ttl}}px;'><div class='taskTTL'><h3>{{ttl}}</h3></div></div><div class='taskTitle'><h4 class='lead'>{{title}}</h4></div><div ng-show='showTaskMenu'><button class='btn btn-danger'>Delete</button></div></div>",
     link:function(scope, element, attrs) {
       scope.showTaskMenu=false;
       scope.toggleTaskMenu=function() {
         scope.showTaskMenu=! scope.showTaskMenu;
+        //element.css({'opacity':'0.5'});
+
       }
       attrs.$observe('ttl', function(value) {
         if(value<4) {
@@ -167,4 +169,8 @@ app.directive('sortOrbit', function() {
 })
 
 
-
+//logic for sorting 
+//query the {{sum}} object and see if less than 8 (or set number). 
+//then get the {{orbit}} and go up a level and get all of the tasks on that orbit 
+//see if any tasks are the same TTL as time left on orbit 
+// if not place the closest(maybe for beta) or random one next

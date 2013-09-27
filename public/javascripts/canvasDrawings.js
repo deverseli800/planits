@@ -49,7 +49,7 @@ function drawStraightOrbits(number, spacing, height) {
      context.beginPath();
       context.moveTo(0, startPoint);
       context.lineTo(canvas.width, startPoint);
-      context.lineWidth = 2;
+      context.lineWidth = 1;
 
    
       context.strokeStyle = 'white';
@@ -59,7 +59,7 @@ function drawStraightOrbits(number, spacing, height) {
      context.beginPath();
       context.moveTo(0, startPoint-spacing);
       context.lineTo(canvas.width, startPoint-spacing);
-      context.lineWidth = 2;
+      context.lineWidth = 1;
 
    
       context.strokeStyle = 'white';
@@ -68,7 +68,7 @@ function drawStraightOrbits(number, spacing, height) {
      context.beginPath();
       context.moveTo(0, startPoint-(2*spacing));
       context.lineTo(canvas.width, startPoint-(2*spacing));
-      context.lineWidth = 2;
+      context.lineWidth = 1;
 
    
       context.strokeStyle = 'white';
@@ -77,7 +77,7 @@ function drawStraightOrbits(number, spacing, height) {
     context.beginPath();
       context.moveTo(0, startPoint-(3*spacing));
       context.lineTo(canvas.width, startPoint-(3*spacing));
-      context.lineWidth = 2;
+      context.lineWidth = 1;
 
    
       context.strokeStyle = 'white';
@@ -86,7 +86,7 @@ function drawStraightOrbits(number, spacing, height) {
      context.beginPath();
       context.moveTo(0, startPoint-(4*spacing));
       context.lineTo(canvas.width, startPoint-(4*spacing));
-      context.lineWidth = 2;
+      context.lineWidth = 1;
 
    
       context.strokeStyle = 'white';
